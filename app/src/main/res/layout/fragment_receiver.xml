@@ -51,7 +51,6 @@
                 android:text="@string/btn_send"
                 app:btnFontPath="fonts/montserrat_medium.otf" />
 
-
         </LinearLayout>
 
         <LinearLayout

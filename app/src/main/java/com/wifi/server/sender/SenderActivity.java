@@ -123,9 +123,10 @@ public class SenderActivity extends BaseActivity implements WifiP2PConnectionCal
                             ((SenderFragment) fragment).decodeAndDisplayImage(decodedImage);
                         }
                     } else {
-                        //DialogHelper.getInstance().displayDialog(SenderActivity.this, fullMessage += message,
-                        //        imageResourceId, false, SenderActivity.this);
-                        Toast.makeText(SenderActivity.this, "Message received" + message, Toast.LENGTH_LONG).show();
+                        Fragment fragment = getCurrentFragment();
+                        if (fragment instanceof SenderFragment) {
+                            ((SenderFragment) fragment).displayText(message);
+                        }
                     }
                 }
             }
@@ -207,6 +208,7 @@ public class SenderActivity extends BaseActivity implements WifiP2PConnectionCal
     @Override
     public void onDataReceivedSuccess(String s) {
         onDataTransferCompleted(s);
+        wifiP2PService.startDataTransfer(null);
     }
 
     @Override

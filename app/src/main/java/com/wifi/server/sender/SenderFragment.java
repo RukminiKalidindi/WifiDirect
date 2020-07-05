@@ -26,7 +26,7 @@ public class SenderFragment extends BaseFragment {
 
     private View connectView, hotspotView, dataView;
     private AnimationView connectGif, hotspotGif, dataGif;
-    private TextView connectTxtView, hotspotTxtView, dataTxtView;
+    private TextView connectTxtView, hotspotTxtView, dataTxtView, receivedText;
 
     private WifiP2pDevice wifiP2pDevice;
     public static SenderFragment newInstance(WifiP2pDevice wifiP2pDevice) {
@@ -59,6 +59,7 @@ public class SenderFragment extends BaseFragment {
         connectView = rootView.findViewById(R.id.scan_progress);
         connectGif = rootView.findViewById(R.id.gif1);
         connectTxtView = rootView.findViewById(R.id.progress_txt);
+        receivedText = rootView.findViewById(R.id.received_text);
 
         hotspotView = rootView.findViewById(R.id.scan_hotspot);
         hotspotGif = rootView.findViewById(R.id.gif2);
@@ -130,4 +131,6 @@ public class SenderFragment extends BaseFragment {
     public void decodeAndDisplayImage(Bitmap bitmap) {
         image.setImageBitmap(bitmap);
     }
+
+    public void displayText(String text) { receivedText.setText(receivedText.getText() + "\n" + text); }
 }
